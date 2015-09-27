@@ -1,0 +1,52 @@
+#getting and cleaning data
+Johns Hopkins Data Science
+Wayne Luan
+
+
+#Project description
+The final project is a test to the lessons taught from the coursera class on getting and cleaning data.  In this exercise, I will load, merge, transform data.
+
+#Data source
+The data can be found from the UCI Machine Learning Repo.
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+#Attributes
+For each record in the dataset it is provided: 
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration. 
+- Triaxial Angular velocity from the gyroscope. 
+- A 561-feature vector with time and frequency domain variables. 
+- Its activity label. 
+- An identifier of the subject who carried out the experiment.
+
+#Data Set Description
+- 'features.txt': List of all features.
+- 'activity_labels.txt': Links the class labels with their activity name.
+- 'train/X_train.txt': Training set.
+- 'train/y_train.txt': Training labels.
+- 'test/X_test.txt': Test set.
+- 'test/y_test.txt': Test labels.
+
+
+#project steps
+
+1. Merges the training and the test sets to create one data set.
+- 8 text files were loaded into the R workspace.  
+- column names are each fileset and concatenated based on train or test
+- merged train and test filesets using rbind into finalData
+
+
+2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+- a vector was created that only contained the column names
+- using grepl, a logical vector is then created to index only the mean and std of the dataset
+- finalData set now only contains data where the logical vector is T
+
+3. Uses descriptive activity names to name the activities in the data set
+- merge the finalData with activity type to get a descriptive name
+
+4. Appropriately labels the data set with descriptive variable names. 
+- use Grepl pattern recognition to erase confusing symbols and abbreviations into easier to understand names
+
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+- create a separate tidy set removing activityType
+- aggregate the mean and standard deviation by indexing from activityID and subjectID from the original data set
+- export the data set
